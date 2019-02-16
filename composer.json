@@ -1,0 +1,26 @@
+{
+  "name": "signalize/module-hue",
+  "description": "Philips Hue",
+  "type": "signalize-module",
+  "authors": [
+    {
+      "name": "Signalize",
+      "email": "info@signalize.nl"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Signalize\\ModuleHue\\": "src/"
+    }
+  },
+  "require": {
+    "signalize/signalize": "dev-master",
+    "ext-json": "*"
+  },
+  "license": [
+    "MIT"
+  ],
+  "bin": [
+    "bin/service-module-hue"
+  ]
+}

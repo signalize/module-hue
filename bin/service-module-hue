@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+if (php_sapi_name() !== 'cli') {
+    die("This file can only be loaded into a CLI Enviroment!");
+}
+if (!file_exists("composer.phar")) {
+    die("Cannot find composer.phar. Maybe the current work directory is not equal to the install directory?");
+}
+if (!file_exists("composer.json")) {
+    die("Cannot find composer.json. Maybe the current work directory is not equal to the install directory?");
+}
+
+/** @noinspection PhpIncludeInspection */
+require("vendor/autoload.php");
+return new \Signalize\ModuleHue\Service();
