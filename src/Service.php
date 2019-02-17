@@ -47,13 +47,18 @@ class Service extends Base
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, 'devicetype=signalize');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
+        $result = json_decode(curl_exec($ch));
         curl_close($ch);
 
-        $data = Cache::get('module-hue');
-        $data['username'] = $result;
+        if ($result->error) {
+            throw new \Exception($result->error, 415);
+        }
 
+
+        $data = Cache::get('module-hue');
+        $data->username = $result;
         Cache::save('module-hue', $data);
+
         return new Package($data);
     }
 
