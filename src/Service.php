@@ -11,10 +11,11 @@ class Service extends Base
 
     public function worker()
     {
-//        $device = new Device("/dev/ttyUSB0", 115200);
-//        $device->subscribe(function (Package $data) {
-//            $this->send($data);
-//        });
+        $lights = $this->callAPI('lights');
+        var_dump($lights);
+
+
+        sleep(1);
     }
 
     /**
